@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/senti-platform/senti-api-test#readme",
   "dependencies": {
-    "apisauce": "^1.0.0"
+    "apisauce": "^1.0.0",
+    "dotenv": "^6.1.0",
+    "find-config": "^1.0.0"
   }
 }

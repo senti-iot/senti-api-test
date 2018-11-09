@@ -1,16 +1,22 @@
-require('dotenv').load
+require('dotenv').load()
 const create = require('apisauce').create
+const { encrypt, decrypt } = require('./lib/encryption')
 
-// dotenv.load()
+const { ENCRYPTION_KEY, API_URL_TEST } = process.env
 
 const apiRoute = '/weather/v2/2018-11-09T13:00:00/57.0488/9.9217/da'
 const numRetry = 5
 
+let tokenEncrypted = encrypt(ENCRYPTION_KEY)
+// console.log(decrypt(tokenEncrypted))
+
 const api = create({
-	baseURL: process.env.API_URL,
+	baseURL: API_URL_TEST,
 	timeout: 30000,
 	headers: {
-		'auth-token': process.env.AUTH_TOKEN
+		'Accept': 'application/json',
+		'Content-Type': 'application/json',
+		'auth': tokenEncrypted
 	}
 })
 
@@ -38,22 +44,7 @@ const result = async () => {
 	let response
 	response = await apiCall(numRetry)
 	console.log(response)
+	return
 }
 
-
-router.get('/:version/:date/:lat/:long/:lang', async (req, res, next) => {
-	if (verifyAPIVersion(req.params.version)) {
-		let response
-		response = await getWeatherRetry(req.params.date, req.params.lat, req.params.long, req.params.lang, numRetry)
-		res.json(response)
-	} else {
-		// Version error or test next version
-		// response.headers.get('content-type').indexOf('javascript') === -1
-		// let h = 
-		if (req.params.version === 'v2') {
-			// console.log(req.headers)
-			res.json(req.headers)
-		}
-		// res.send(`API/weather version: ${req.params.version} not supported`)
-	}
-})
+result()
