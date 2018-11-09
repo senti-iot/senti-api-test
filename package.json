@@ -1,0 +1,28 @@
+{
+  "name": "senti-api-test",
+  "version": "1.0.0",
+  "description": "Senti API test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senti-platform/senti-api-test.git"
+  },
+  "keywords": [
+    "Senti",
+    "Senti.Cloud",
+    "SentiAPI",
+    "test"
+  ],
+  "author": "Christian Broberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senti-platform/senti-api-test/issues"
+  },
+  "homepage": "https://github.com/senti-platform/senti-api-test#readme",
+  "dependencies": {
+    "apisauce": "^1.0.0"
+  }
+}
