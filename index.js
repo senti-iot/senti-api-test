@@ -3,15 +3,15 @@ const create = require('apisauce').create
 const { encrypt } = require('./lib/encryption')
 // const { encrypt, decrypt } = require('./lib/encryption')
 
-const { ENCRYPTION_KEY, API_URL_TEST } = process.env
+const { ENCRYPTION_KEY, API_URL } = process.env
 
-const apiRoute = '/weather/v2/2018-11-09T13:00:00/57.0488/9.9217/da'
+const apiRoute = '/weather/v1/2018-11-09T13:00:00/57.0488/9.9217/da'
 const numRetry = 5
 
 let tokenEncrypted = encrypt(ENCRYPTION_KEY)
 
 const api = create({
-	baseURL: API_URL_TEST,
+	baseURL: API_URL,
 	timeout: 30000,
 	headers: {
 		'auth': tokenEncrypted
@@ -30,7 +30,7 @@ const apiCall = async (n) => {
 	}
 	// check response	
 	if (response.ok && response.status == 200) {
-		console.log('API/weather returned:', response.status, Date())
+		console.log('API/weather:', response.status, Date())
 		return response.data
 	} else {
 		console.log('API/weather Error:', response.problem)
