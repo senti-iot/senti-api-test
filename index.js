@@ -2,7 +2,7 @@ require('dotenv').load()
 const create = require('apisauce').create
 const { encrypt } = require('senti-apicore')
 
-const { ENCRYPTION_KEY, API_URL_TEST } = process.env
+const { ENCRYPTION_KEY, API_URL } = process.env
 
 const apiRoute = '/weather/v2/2018-11-09T13:00:00/57.0488/9.9217/da'
 const numRetry = 5
@@ -10,7 +10,7 @@ const numRetry = 5
 let tokenEncrypted = encrypt(ENCRYPTION_KEY)
 
 const api = create({
-	baseURL: API_URL_TEST,
+	baseURL: API_URL,
 	timeout: 30000,
 	headers: {
 		'auth': tokenEncrypted
@@ -32,7 +32,7 @@ const apiCall = async (n) => {
 		console.log('API/weather:', response.status, Date())
 		return response.data
 	} else {
-		console.log('API/weather Error:', response.problem)
+		console.log('API/weather Error:', response.problem, Date())
 		return 403
 	}
 }
