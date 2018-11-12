@@ -1,7 +1,6 @@
 require('dotenv').load()
 const create = require('apisauce').create
-const { encrypt } = require('./lib/encryption')
-// const { encrypt, decrypt } = require('./lib/encryption')
+const { encrypt } = require('senti-apicore')
 
 const { ENCRYPTION_KEY, API_URL_TEST } = process.env
 
