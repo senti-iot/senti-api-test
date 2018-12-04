@@ -4,8 +4,8 @@ const { encrypt } = require('senti-apicore')
 
 const { ENCRYPTION_KEY, API_LOCAL, API_DEV } = process.env
 
-const apiRoute = '/annual/v1/2018-01-01/2018-12-31/en'
-const numRetry = 5
+const apiRoute = '/annual/v1/2018-02-04/2018-02-06/en'
+const numRetry = 1
 
 const api = create({
 	baseURL: API_LOCAL,
