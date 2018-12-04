@@ -2,7 +2,7 @@ require('dotenv').load()
 const create = require('apisauce').create
 const { encrypt } = require('senti-apicore')
 
-const { ENCRYPTION_KEY, API_LOCAL, API_DEV } = process.env
+const { ENCRYPTION_KEY, API_LOCAL, API_DEV, API_URL } = process.env
 
 const apiRoute = '/weather/v1/2018-11-09T13:00:00/57.0488/9.9217/da'
 const numRetry = 5
