@@ -43,3 +43,13 @@ const result = async () => {
 }
 
 result()
+
+/* 
+
+Salling Group holidays API proxy
+Date format: YYYY-MM-DD
+https://dev.api.senti.cloud/holidays/v1/2018-01-01/2018-12-31/da
+https://dev.api.senti.cloud/holidays/v1/2018-01-01/2018-12-31/en
+/:version/:startdate/:enddate/:lang
+
+ */
