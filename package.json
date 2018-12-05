@@ -1,11 +1,9 @@
 {
   "name": "senti-api-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Senti API test",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/senti-platform/senti-api-test.git"
@@ -27,8 +25,8 @@
   },
   "homepage": "https://github.com/senti-platform/senti-api-test#readme",
   "dependencies": {
-    "apisauce": "^1.0.0",
-    "dotenv": "^6.1.0",
+    "apisauce": "^1.0.1",
+    "dotenv": "^6.2.0",
     "find-config": "^1.0.0",
     "senti-apicore": "0.0.14"
   }
