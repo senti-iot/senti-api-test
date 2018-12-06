@@ -7,8 +7,20 @@ const { ENCRYPTION_KEY, API_LOCAL, API_DEV, API_URL } = process.env
 const apiRoute = '/weather/v1/2018-11-09T13:00:00/57.0488/9.9217/da'
 const numRetry = 5
 
+const setMode = () => {
+	let args = process.argv.slice(2).toString()
+	args ? console.log('API test mode:', args) : null
+	switch (args) {
+		case 'dev': return API_DEV
+		case 'local': return API_LOCAL
+		case 'prod': return API_URL
+		// case '': return API_DEV
+		default: return API_LOCAL
+	}
+}
+
 const api = create({
-	baseURL: API_LOCAL,
+	baseURL: setMode(),
 	timeout: 30000,
 	headers: {
 		'auth': encrypt(ENCRYPTION_KEY)
@@ -31,7 +43,7 @@ const apiCall = async (n) => {
 		return response.data
 	} else {
 		console.log('API/weather Error:', response.problem, Date())
-		return 403
+		process.exit(1)
 	}
 }
 
@@ -39,7 +51,6 @@ const result = async () => {
 	let response
 	response = await apiCall(numRetry)
 	console.log(response)
-	return
 }
 
 result()
